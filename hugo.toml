@@ -1,0 +1,4 @@
+baseURL = ''
+languageCode = 'en-us'
+title = '{ SAP Cloud Solutions Architect - App Dev | Integrtaions | AIML | Automations | DevOps }'
+theme = ["PaperMod"]
