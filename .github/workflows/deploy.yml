@@ -31,8 +31,8 @@ jobs:
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: |
-          cp -R public/* ${GITHUB_WORKSPACE}/public/
-          cd ${GITHUB_WORKSPACE}/public
+          cp -R public/* ${GITHUB_WORKSPACE}
+          cd ${GITHUB_WORKSPACE}
           git add .
           git config user.name 'writefayaz'
           git config user.email 'writefayaz@gmail.com'
