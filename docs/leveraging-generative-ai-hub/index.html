@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Harnessing RAG with Generative AI Hub and Chroma Vector Store - Using Python SDK | SAP Cloud Solutions Architect - App Dev | Integrtaions | AIML | Automations | DevOps</title>
+<meta name="keywords" content="">
+<meta name="description" content="In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP&rsquo;s recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here&rsquo;s how you can leverage this powerful tool to enhance your applications and drive innovation.
+Exploring the SAP Generative AI Hub The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others.">
+<meta name="author" content="">
+<link rel="canonical" href="https://rotatingbananas.com/docs/leveraging-generative-ai-hub/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://rotatingbananas.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://rotatingbananas.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://rotatingbananas.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://rotatingbananas.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://rotatingbananas.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://rotatingbananas.com/docs/leveraging-generative-ai-hub/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Harnessing RAG with Generative AI Hub and Chroma Vector Store - Using Python SDK" />
+<meta property="og:description" content="In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP&rsquo;s recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here&rsquo;s how you can leverage this powerful tool to enhance your applications and drive innovation.
+Exploring the SAP Generative AI Hub The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rotatingbananas.com/docs/leveraging-generative-ai-hub/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2024-04-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-23T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Harnessing RAG with Generative AI Hub and Chroma Vector Store - Using Python SDK"/>
+<meta name="twitter:description" content="In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP&rsquo;s recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here&rsquo;s how you can leverage this powerful tool to enhance your applications and drive innovation.
+Exploring the SAP Generative AI Hub The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Docs",
+      "item": "https://rotatingbananas.com/docs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Harnessing RAG with Generative AI Hub and Chroma Vector Store - Using Python SDK",
+      "item": "https://rotatingbananas.com/docs/leveraging-generative-ai-hub/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Harnessing RAG with Generative AI Hub and Chroma Vector Store - Using Python SDK",
+  "name": "Harnessing RAG with Generative AI Hub and Chroma Vector Store - Using Python SDK",
+  "description": "In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP\u0026rsquo;s recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here\u0026rsquo;s how you can leverage this powerful tool to enhance your applications and drive innovation.\nExploring the SAP Generative AI Hub The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others.",
+  "keywords": [
+    
+  ],
+  "articleBody": "In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP’s recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here’s how you can leverage this powerful tool to enhance your applications and drive innovation.\nExploring the SAP Generative AI Hub The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others. This flexibility allows developers to integrate AI capabilities seamlessly into their existing systems. Visit the SAP AI Core on the Discovery Center.\nUtilizing SDKs for Enhanced Integration For those looking to dive deeper, the Generative AI Hub offers specialized SDKs, including Python and JavaScript versions. These SDKs simplify the implementation of complex functionalities such as agent orchestration, retrieval augmented generation, and chat history management. By using these SDKs, developers can create more dynamic and responsive AI applications. Visit the SAP generative AI hub SDK\nAdvanced Use Case: Retrieval Augmented Generation One of the most exciting capabilities of the Generative AI Hub is its support for retrieval augmented generation. This technique involves grounding a large language model in specific context information, thereby improving the accuracy and relevance of its responses.\nPractical Implementation with Python SDK Using the Python SDK provided by the Generative AI Hub, developers can implement retrieval augmented generation by integrating with SAP AI Core and Hana Vector Store. This process involves converting relevant data into embeddings, which are then stored and utilized to provide contextually aware responses.\nExample: Educational Assistance Consider the scenario where an AI helps students with literature assignments. By storing detailed summaries of required reading materials as embeddings in a vector database, the AI can access the most relevant information to accurately respond to queries about the text. This not only enhances learning but also ensures the integrity of the educational process by preventing the AI from generating incorrect or misleading information.\nSetting Up and Deploying Models Setting up and deploying models within the AI Launchpad is straightforward. Developers can manage their AI deployments effectively, allowing for quick iterations and updates to their applications. This ease of use is crucial for maintaining the agility required in today’s fast-paced technological landscape.\nCode Repo RAG with SAP generative AI hub.\nUsing Chroma Vector Store with OpenAI Embeddings for Efficient Information Retrieval In this blog, we’ll explore an alternative approach to store vectors and facilitate efficient retrieval of answers for natural language queries, specifically focusing on a scenario involving questions about time travel. This method utilizes the Chroma vector store from the langchain_community alongside OpenAI embeddings, serving as a cost-effective alternative to SAP HANA Vector Store.\nImplementation \u0026 Code Breakdown Below is the Python code for setting up the system, complete with comments explaining each component’s function:\n# Import the ChatOpenAI class for chat-based model interactions from gen_ai_hub.proxy.langchain.openai import ChatOpenAI # Import the OpenAIEmbeddings class to handle text embeddings from gen_ai_hub.proxy.langchain.openai import OpenAIEmbeddings # Import tools for splitting texts into manageable chunks from langchain.text_splitter import CharacterTextSplitter # Import a utility for loading text documents from langchain_community.document_loaders import TextLoader # Import Chroma for creating a vector store from text embeddings from langchain_community.vectorstores import Chroma # Import the RetrievalQA class for retrieval-based question answering from langchain.chains import RetrievalQA # Initialize a text loader for the document 'time_travel.txt' loader = TextLoader('time_travel.txt') # Load the document's content documents = loader.load() # Setup a splitter to divide text into 1000 character chunks with no overlap text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0) # Apply the text splitter to the loaded documents texts = text_splitter.split_documents(documents) # Setup an embedding model using OpenAI's 'text-embedding-ada-002' embedding_model = OpenAIEmbeddings(proxy_model_name='text-embedding-ada-002') # Create a Chroma vector store using the generated text chunks and the embedding model db = Chroma.from_documents(texts, embedding_model) # Convert the vector store into a retriever for fetching relevant text chunks retriever = db.as_retriever() # Initialize a chat model using OpenAI's 'gpt-35-turbo' chat_llm = ChatOpenAI(proxy_model_name='gpt-35-turbo') # Configure the RetrievalQA system with the chat model and text retriever qa = RetrievalQA.from_llm( llm=chat_llm, retriever=retriever) # Define a complex query about time travel query = \"\" # Print a response header print('\\nRESPONSE:') # Invoke the question-answering system with the query and print the output print(qa.invoke(query)['result']) In conclusion, the Generative AI Hub offers a powerful suite of tools for developers looking to advance their applications with AI. Whether you are implementing basic interactions or complex, contextually aware systems, the platform provides the necessary components to bring your innovative solutions to life. Harness these tools to not only enhance your applications but also to drive forward the future of AI in your industry.\n",
+  "wordCount" : "785",
+  "inLanguage": "en",
+  "datePublished": "2024-04-23T00:00:00Z",
+  "dateModified": "2024-04-23T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://rotatingbananas.com/docs/leveraging-generative-ai-hub/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SAP Cloud Solutions Architect - App Dev | Integrtaions | AIML | Automations | DevOps",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rotatingbananas.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://rotatingbananas.com/" accesskey="h" title="SAP Cloud Solutions Architect - App Dev | Integrtaions | AIML | Automations | DevOps (Alt + H)">SAP Cloud Solutions Architect - App Dev | Integrtaions | AIML | Automations | DevOps</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Harnessing RAG with Generative AI Hub and Chroma Vector Store - Using Python SDK
+    </h1>
+    <div class="post-meta"><span title='2024-04-23 00:00:00 +0000 UTC'>April 23, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP&rsquo;s recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here&rsquo;s how you can leverage this powerful tool to enhance your applications and drive innovation.</p>
+<h2 id="exploring-the-sap-generative-ai-hub">Exploring the SAP Generative AI Hub<a hidden class="anchor" aria-hidden="true" href="#exploring-the-sap-generative-ai-hub">#</a></h2>
+<p>The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others. This flexibility allows developers to integrate AI capabilities seamlessly into their existing systems. Visit the <a href="https://discovery-center.cloud.sap/serviceCatalog/sap-ai-core?region=all">SAP AI Core on the Discovery Center</a>.</p>
+<h3 id="utilizing-sdks-for-enhanced-integration">Utilizing SDKs for Enhanced Integration<a hidden class="anchor" aria-hidden="true" href="#utilizing-sdks-for-enhanced-integration">#</a></h3>
+<p>For those looking to dive deeper, the Generative AI Hub offers specialized SDKs, including Python and JavaScript versions. These SDKs simplify the implementation of complex functionalities such as agent orchestration, retrieval augmented generation, and chat history management. By using these SDKs, developers can create more dynamic and responsive AI applications. Visit the <a href="https://pypi.org/project/generative-ai-hub-sdk/">SAP generative AI hub SDK</a></p>
+<h2 id="advanced-use-case-retrieval-augmented-generation">Advanced Use Case: Retrieval Augmented Generation<a hidden class="anchor" aria-hidden="true" href="#advanced-use-case-retrieval-augmented-generation">#</a></h2>
+<p>One of the most exciting capabilities of the Generative AI Hub is its support for retrieval augmented generation. This technique involves grounding a large language model in specific context information, thereby improving the accuracy and relevance of its responses.</p>
+<h3 id="practical-implementation-with-python-sdk">Practical Implementation with Python SDK<a hidden class="anchor" aria-hidden="true" href="#practical-implementation-with-python-sdk">#</a></h3>
+<p>Using the Python SDK provided by the Generative AI Hub, developers can implement retrieval augmented generation by integrating with SAP AI Core and Hana Vector Store. This process involves converting relevant data into embeddings, which are then stored and utilized to provide contextually aware responses.</p>
+<h4 id="example-educational-assistance">Example: Educational Assistance<a hidden class="anchor" aria-hidden="true" href="#example-educational-assistance">#</a></h4>
+<p>Consider the scenario where an AI helps students with literature assignments. By storing detailed summaries of required reading materials as embeddings in a vector database, the AI can access the most relevant information to accurately respond to queries about the text. This not only enhances learning but also ensures the integrity of the educational process by preventing the AI from generating incorrect or misleading information.</p>
+<h2 id="setting-up-and-deploying-models">Setting Up and Deploying Models<a hidden class="anchor" aria-hidden="true" href="#setting-up-and-deploying-models">#</a></h2>
+<p>Setting up and deploying models within the AI Launchpad is straightforward. Developers can manage their AI deployments effectively, allowing for quick iterations and updates to their applications. This ease of use is crucial for maintaining the agility required in today&rsquo;s fast-paced technological landscape.</p>
+<h2 id="code-repo">Code Repo<a hidden class="anchor" aria-hidden="true" href="#code-repo">#</a></h2>
+<p><a href="https://github.com/writefayaz/sap-tech-bytes/tree/2024-29-01-generative-ai-hub">RAG with SAP generative AI hub</a>.</p>
+<h1 id="using-chroma-vector-store-with-openai-embeddings-for-efficient-information-retrieval">Using Chroma Vector Store with OpenAI Embeddings for Efficient Information Retrieval<a hidden class="anchor" aria-hidden="true" href="#using-chroma-vector-store-with-openai-embeddings-for-efficient-information-retrieval">#</a></h1>
+<p>In this blog, we&rsquo;ll explore an alternative approach to store vectors and facilitate efficient retrieval of answers for natural language queries, specifically focusing on a scenario involving questions about time travel. This method utilizes the Chroma vector store from the <code>langchain_community</code> alongside OpenAI embeddings, serving as a cost-effective alternative to SAP HANA Vector Store.</p>
+<h2 id="implementation--code-breakdown">Implementation &amp; Code Breakdown<a hidden class="anchor" aria-hidden="true" href="#implementation--code-breakdown">#</a></h2>
+<p>Below is the Python code for setting up the system, complete with comments explaining each component&rsquo;s function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Import the ChatOpenAI class for chat-based model interactions</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gen_ai_hub.proxy.langchain.openai <span style="color:#f92672">import</span> ChatOpenAI
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import the OpenAIEmbeddings class to handle text embeddings</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gen_ai_hub.proxy.langchain.openai <span style="color:#f92672">import</span> OpenAIEmbeddings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import tools for splitting texts into manageable chunks</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.text_splitter <span style="color:#f92672">import</span> CharacterTextSplitter
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import a utility for loading text documents</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_community.document_loaders <span style="color:#f92672">import</span> TextLoader
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import Chroma for creating a vector store from text embeddings</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_community.vectorstores <span style="color:#f92672">import</span> Chroma
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import the RetrievalQA class for retrieval-based question answering</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains <span style="color:#f92672">import</span> RetrievalQA
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize a text loader for the document &#39;time_travel.txt&#39;</span>
+</span></span><span style="display:flex;"><span>loader <span style="color:#f92672">=</span> TextLoader(<span style="color:#e6db74">&#39;time_travel.txt&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the document&#39;s content</span>
+</span></span><span style="display:flex;"><span>documents <span style="color:#f92672">=</span> loader<span style="color:#f92672">.</span>load()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Setup a splitter to divide text into 1000 character chunks with no overlap</span>
+</span></span><span style="display:flex;"><span>text_splitter <span style="color:#f92672">=</span> CharacterTextSplitter(chunk_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, chunk_overlap<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Apply the text splitter to the loaded documents</span>
+</span></span><span style="display:flex;"><span>texts <span style="color:#f92672">=</span> text_splitter<span style="color:#f92672">.</span>split_documents(documents)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Setup an embedding model using OpenAI&#39;s &#39;text-embedding-ada-002&#39;</span>
+</span></span><span style="display:flex;"><span>embedding_model <span style="color:#f92672">=</span> OpenAIEmbeddings(proxy_model_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;text-embedding-ada-002&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a Chroma vector store using the generated text chunks and the embedding model</span>
+</span></span><span style="display:flex;"><span>db <span style="color:#f92672">=</span> Chroma<span style="color:#f92672">.</span>from_documents(texts, embedding_model)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert the vector store into a retriever for fetching relevant text chunks</span>
+</span></span><span style="display:flex;"><span>retriever <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>as_retriever()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize a chat model using OpenAI&#39;s &#39;gpt-35-turbo&#39;</span>
+</span></span><span style="display:flex;"><span>chat_llm <span style="color:#f92672">=</span> ChatOpenAI(proxy_model_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gpt-35-turbo&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configure the RetrievalQA system with the chat model and text retriever</span>
+</span></span><span style="display:flex;"><span>qa <span style="color:#f92672">=</span> RetrievalQA<span style="color:#f92672">.</span>from_llm(
+</span></span><span style="display:flex;"><span>    llm<span style="color:#f92672">=</span>chat_llm, retriever<span style="color:#f92672">=</span>retriever)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define a complex query about time travel</span>
+</span></span><span style="display:flex;"><span>query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print a response header</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">RESPONSE:&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Invoke the question-answering system with the query and print the output</span>
+</span></span><span style="display:flex;"><span>print(qa<span style="color:#f92672">.</span>invoke(query)[<span style="color:#e6db74">&#39;result&#39;</span>])
+</span></span></code></pre></div><p>In conclusion, the Generative AI Hub offers a powerful suite of tools for developers looking to advance their applications with AI. Whether you are implementing basic interactions or complex, contextually aware systems, the platform provides the necessary components to bring your innovative solutions to life. Harness these tools to not only enhance your applications but also to drive forward the future of AI in your industry.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://rotatingbananas.com/">SAP Cloud Solutions Architect - App Dev | Integrtaions | AIML | Automations | DevOps</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
