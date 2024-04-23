@@ -1,4 +1,4 @@
-baseURL = 'https://otatingbananas.com'
+baseURL = 'https://writefayaz.github.io/rotatingbananas/'
 languageCode = 'en-us'
 title = '{ SAP Cloud Solutions Architect - App Dev | Integrtaions | AIML | Automations | DevOps }'
 theme = ["PaperMod"]

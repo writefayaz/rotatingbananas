@@ -19,7 +19,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           ref: gh-pages
-          path: built-site
+          path: ./public
 
       - name: Setup Hugo
         run: |
@@ -31,8 +31,8 @@ jobs:
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: |
-          cp -R public/* ${GITHUB_WORKSPACE}/built-site
-          cd ${GITHUB_WORKSPACE}/built-site
+          cp -R public/* ${GITHUB_WORKSPACE}/public/
+          cd ${GITHUB_WORKSPACE}/public
           git add .
           git config user.name 'writefayaz'
           git config user.email 'writefayaz@gmail.com'
