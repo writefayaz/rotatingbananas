@@ -6,20 +6,20 @@ draft: false
 
 In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP's recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here's how you can leverage this powerful tool to enhance your applications and drive innovation.
 
-## Exploring the SAP Generative AI Hub
+### Exploring the SAP Generative AI Hub
 
 The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others. This flexibility allows developers to integrate AI capabilities seamlessly into their existing systems. Visit the [SAP AI Core on the Discovery Center](https://discovery-center.cloud.sap/serviceCatalog/sap-ai-core?region=all).
 
 
-### Utilizing SDKs for Enhanced Integration
+#### Utilizing SDKs for Enhanced Integration
 
 For those looking to dive deeper, the Generative AI Hub offers specialized SDKs, including Python and JavaScript versions. These SDKs simplify the implementation of complex functionalities such as agent orchestration, retrieval augmented generation, and chat history management. By using these SDKs, developers can create more dynamic and responsive AI applications. Visit the [SAP generative AI hub SDK](https://pypi.org/project/generative-ai-hub-sdk/)
 
-## Advanced Use Case: Retrieval Augmented Generation
+#### Advanced Use Case: Retrieval Augmented Generation
 
 One of the most exciting capabilities of the Generative AI Hub is its support for retrieval augmented generation. This technique involves grounding a large language model in specific context information, thereby improving the accuracy and relevance of its responses.
 
-### Practical Implementation with Python SDK
+#### Practical Implementation with Python SDK
 
 Using the Python SDK provided by the Generative AI Hub, developers can implement retrieval augmented generation by integrating with SAP AI Core and Hana Vector Store. This process involves converting relevant data into embeddings, which are then stored and utilized to provide contextually aware responses.
 
@@ -27,18 +27,18 @@ Using the Python SDK provided by the Generative AI Hub, developers can implement
 
 Consider the scenario where an AI helps students with literature assignments. By storing detailed summaries of required reading materials as embeddings in a vector database, the AI can access the most relevant information to accurately respond to queries about the text. This not only enhances learning but also ensures the integrity of the educational process by preventing the AI from generating incorrect or misleading information.
 
-## Setting Up and Deploying Models
+#### Setting Up and Deploying Models
 
 Setting up and deploying models within the AI Launchpad is straightforward. Developers can manage their AI deployments effectively, allowing for quick iterations and updates to their applications. This ease of use is crucial for maintaining the agility required in today's fast-paced technological landscape.
 
-## Code Repo
+#### Code Repo
 [RAG with SAP generative AI hub](https://github.com/writefayaz/sap-tech-bytes/tree/2024-29-01-generative-ai-hub).
 
-# Using Chroma Vector Store with OpenAI Embeddings for Efficient Information Retrieval
+### Using Chroma Vector Store with OpenAI Embeddings for Efficient Information Retrieval
 
 In this blog, we'll explore an alternative approach to store vectors and facilitate efficient retrieval of answers for natural language queries, specifically focusing on a scenario involving questions about time travel. This method utilizes the Chroma vector store from the `langchain_community` alongside OpenAI embeddings, serving as a cost-effective alternative to SAP HANA Vector Store.
 
-## Implementation & Code Breakdown
+#### Implementation & Code Breakdown
 
 Below is the Python code for setting up the system, complete with comments explaining each component's function:
 
