@@ -88,9 +88,7 @@ print('\nRESPONSE:')
 # Invoke the question-answering system with the query and print the output
 print(qa.invoke(query)['result'])
 
-
-
-## Alternate Vector Store
+```
 
 In conclusion, the Generative AI Hub offers a powerful suite of tools for developers looking to advance their applications with AI. Whether you are implementing basic interactions or complex, contextually aware systems, the platform provides the necessary components to bring your innovative solutions to life. Harness these tools to not only enhance your applications but also to drive forward the future of AI in your industry.
 
