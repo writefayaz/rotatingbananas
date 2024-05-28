@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vector Engine on Fayaz Mammoo</title>
+    <link>http://localhost:1313/tags/vector-engine/</link>
+    <description>Recent content in Vector Engine on Fayaz Mammoo</description>
+    <generator>Hugo -- 0.125.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/vector-engine/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leveraging AI in SAP with CAP and HANA Cloud&#39;s Vector Engine</title>
+      <link>http://localhost:1313/docs/leveraging-generative-ai-vector-engine-cap/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/leveraging-generative-ai-vector-engine-cap/</guid>
+      <description>Leveraging AI in SAP with CAP and HANA Cloud&amp;rsquo;s Vector Engine Artificial Intelligence (AI) is the most significant trend in 2024, and for good reason. The possibilities for users leveraging AI are immense, including generating code, AI-supported debugging, image and video generation, text generation, and process automation. Popular AI models like ChatGPT and DALL·E 3 showcase these capabilities. The real question for developers is how to harness the power of these models effectively.</description>
+    </item>
+  </channel>
+</rss>
