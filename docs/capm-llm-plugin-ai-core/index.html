@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Enhancing Data Privacy and AI Capabilities with SAP CAP LLM Plugin and RAG | Fayaz Mammoo</title>
+<meta name="keywords" content="">
+<meta name="description" content="As the adoption of Generative AI grows, the need for robust data protection mechanisms becomes paramount. SAP’s CAP LLM Plugin and AI Vector Engine provide a comprehensive solution for creating secure and efficient CAP-based AI applications. This blog post explores CAP LLM Plugin.
+Introduction to CAP LLM Plugin The CAP LLM Plugin simplifies the integration of Generative AI capabilities into SAP CAP applications while ensuring data privacy. By leveraging SAP HANA Cloud’s data anonymization features, the plugin allows developers to anonymize sensitive data before feeding it to Large Language Models (LLMs).">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/docs/capm-llm-plugin-ai-core/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/docs/capm-llm-plugin-ai-core/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Fayaz Mammoo (Alt + H)">Fayaz Mammoo</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Enhancing Data Privacy and AI Capabilities with SAP CAP LLM Plugin and RAG
+    </h1>
+    <div class="post-meta"><span title='2024-05-27 00:00:00 +0000 UTC'>May 27, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>As the adoption of Generative AI grows, the need for robust data protection mechanisms becomes paramount. SAP’s CAP LLM Plugin and AI Vector Engine provide a comprehensive solution for creating secure and efficient CAP-based AI applications. This blog post explores  <a href="https://www.npmjs.com/package/cap-llm-plugin?activeTab=readme">CAP LLM Plugin</a>.</p>
+<h3 id="introduction-to-cap-llm-plugin">Introduction to CAP LLM Plugin<a hidden class="anchor" aria-hidden="true" href="#introduction-to-cap-llm-plugin">#</a></h3>
+<p>The CAP LLM Plugin simplifies the integration of Generative AI capabilities into SAP CAP applications while ensuring data privacy. By leveraging SAP HANA Cloud’s data anonymization features, the plugin allows developers to anonymize sensitive data before feeding it to Large Language Models (LLMs). This process ensures compliance with data protection regulations without compromising on the utility of the data.</p>
+<h3 id="key-features">Key Features<a hidden class="anchor" aria-hidden="true" href="#key-features">#</a></h3>
+<ol>
+<li><strong>Data Anonymization</strong>: Protects sensitive information by anonymizing it, ensuring that individual identities cannot be deduced from the dataset.</li>
+<li><strong>Easy Integration</strong>: Seamlessly integrates with CAP applications, requiring minimal configuration.</li>
+<li><strong>Support for SAP HANA Cloud</strong>: Utilizes SAP HANA Cloud’s advanced data anonymization capabilities.</li>
+</ol>
+<h3 id="implementing-data-anonymization">Implementing Data Anonymization<a hidden class="anchor" aria-hidden="true" href="#implementing-data-anonymization">#</a></h3>
+<p>To implement data anonymization in your CAP application, follow these steps:</p>
+<ol>
+<li>
+<p><strong>Install the CAP LLM Plugin</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install cap-llm-plugin
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Define Anonymized Entities</strong>:
+In your entity definition (e.g., <code>db/schema.cds</code>), use the <code>@anonymize</code> annotation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">namespace</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">cap</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">anonymize</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`ALGORITHM &#39;K-ANONYMITY&#39; PARAMETERS &#39;{&#34;k&#34; : 3}&#39;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">entity</span> <span style="color:#a6e22e">Employee</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">key</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">Integer</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">anonymize</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`{&#34;is_sequence&#34;: true}`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">region</span> <span style="color:#f92672">:</span> String <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">anonymize</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`{&#34;is_quasi_identifier&#34;: true, &#34;hierarchy&#34;: {&#34;embedded&#34;: [[&#34;APJ&#34;],[&#34;EMEA&#34;],[&#34;NA&#34;]]}}`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> String <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">anonymize</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`{&#34;is_quasi_identifier&#34;: true, &#34;hierarchy&#34;: {&#34;embedded&#34;: [[&#34;27&#34;, &#34;15&#34;], [&#34;42&#34;, &#34;45&#34;], [&#34;50&#34;, &#34;45&#34;], [&#34;12&#34;, &#34;15&#34;]]}}`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Consume Anonymized Data</strong>:
+In your service definition (e.g., <code>srv/employee-service.cds</code>), expose the anonymized entity:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">EmployeeService</span> <span style="color:#960050;background-color:#1e0010">@</span>(<span style="color:#a6e22e">path</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;/browse&#39;</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entity</span> <span style="color:#a6e22e">Employee</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">projection</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">sap</span>.<span style="color:#a6e22e">cap</span>.<span style="color:#a6e22e">Employee</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In your service implementation (e.g., <code>srv/employee-service.js</code>), retrieve the anonymized data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">anonymizer</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">cds</span>.<span style="color:#a6e22e">connect</span>.<span style="color:#a6e22e">to</span>(<span style="color:#e6db74">&#34;cap-llm-plugin&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">anonymizer</span>.<span style="color:#a6e22e">getAnonymizedData</span>(<span style="color:#e6db74">&#34;EmployeeService.Employee&#34;</span>, [<span style="color:#ae81ff">1001</span>]);
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="introduction-to-cap-ai-vector-engine-and-rag">Introduction to CAP AI Vector Engine and RAG<a hidden class="anchor" aria-hidden="true" href="#introduction-to-cap-ai-vector-engine-and-rag">#</a></h3>
+<p>The CAP AI Vector Engine sample demonstrates how to enhance CAP applications with Retrieval-Augmented Generation (RAG). This approach combines the power of vector embeddings with Generative AI to deliver more accurate and contextually relevant results.</p>
+<h3 id="key-features-1">Key Features<a hidden class="anchor" aria-hidden="true" href="#key-features-1">#</a></h3>
+<ol>
+<li><strong>Vector Embeddings</strong>: Create and store vector embeddings using SAP HANA Cloud, enabling efficient similarity searches.</li>
+<li><strong>RAG</strong>: Retrieve relevant information from a knowledge base and use it to augment the generative process, enhancing the quality of AI outputs.</li>
+</ol>
+<h3 id="implementing-rag-with-cap-ai-vector-engine">Implementing RAG with CAP AI Vector Engine<a hidden class="anchor" aria-hidden="true" href="#implementing-rag-with-cap-ai-vector-engine">#</a></h3>
+<p>To implement RAG in your CAP application, follow these steps:</p>
+<ol>
+<li>
+<p><strong>Setup Vector Embeddings</strong>:
+Define your entity and create vector embeddings for relevant fields.</p>
+</li>
+<li>
+<p><strong>Perform Similarity Searches</strong>:
+Use the stored vector embeddings to perform similarity searches, retrieving relevant documents or information.</p>
+</li>
+<li>
+<p><strong>Generate Responses</strong>:
+Augment the generative process by incorporating the retrieved information, ensuring that the AI outputs are contextually accurate.</p>
+</li>
+</ol>
+<h3 id="example-code-for-cap-llm-rag">Example Code for CAP LLM RAG<a hidden class="anchor" aria-hidden="true" href="#example-code-for-cap-llm-rag">#</a></h3>
+<ol>
+<li>
+<p><strong>Define the Entity for Vector Embeddings</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">entity</span> <span style="color:#a6e22e">Documents</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">key</span> <span style="color:#a6e22e">ID</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">UUID</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">content</span> <span style="color:#f92672">:</span> String;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">embedding</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">LargeBinary</span>; <span style="color:#75715e">// Store vector embeddings
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Create Vector Embeddings</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aiCoreClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;sap-ai-core-client&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">documents</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">SELECT</span>.<span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#39;Documents&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">doc</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">documents</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">embedding</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">aiCoreClient</span>.<span style="color:#a6e22e">createEmbedding</span>(<span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">content</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">UPDATE</span>(<span style="color:#e6db74">&#39;Documents&#39;</span>).<span style="color:#a6e22e">set</span>({ <span style="color:#a6e22e">embedding</span> }).<span style="color:#a6e22e">where</span>({ <span style="color:#a6e22e">ID</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">ID</span> });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Perform Similarity Search</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryEmbedding</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">aiCoreClient</span>.<span style="color:#a6e22e">createEmbedding</span>(<span style="color:#a6e22e">queryText</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">cds</span>.<span style="color:#a6e22e">run</span>(<span style="color:#a6e22e">SELECT</span>.<span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#39;Documents&#39;</span>).<span style="color:#a6e22e">where</span><span style="color:#e6db74">`similarity(embedding, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">queryEmbedding</span><span style="color:#e6db74">}</span><span style="color:#e6db74">) &gt; 0.8`</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Generate RAG Response</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">relevantDocs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">doc</span> =&gt; <span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">content</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;\n&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">aiCoreClient</span>.<span style="color:#a6e22e">generateResponse</span>(<span style="color:#a6e22e">queryText</span>, <span style="color:#a6e22e">relevantDocs</span>);
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="connecting-cap-llm-plugin-with-rag-workflow">Connecting CAP LLM Plugin with RAG Workflow<a hidden class="anchor" aria-hidden="true" href="#connecting-cap-llm-plugin-with-rag-workflow">#</a></h3>
+<p>To connect the CAP LLM Plugin with the RAG workflow, you need to follow these steps:</p>
+<ol>
+<li>
+<p><strong>Anonymize Data for LLM Input</strong>:
+Use the CAP LLM Plugin to anonymize data that will be used as input for generating vector embeddings and performing similarity searches.</p>
+</li>
+<li>
+<p><strong>Create Vector Embeddings from Anonymized Data</strong>:
+Generate vector embeddings from the anonymized data to ensure privacy.</p>
+</li>
+<li>
+<p><strong>Integrate with SAP AI Core</strong>:
+Use SAP AI Core to perform similarity searches and generate responses, ensuring that the data processed by AI services is anonymized.</p>
+</li>
+</ol>
+<h3 id="example-workflow">Example Workflow<a hidden class="anchor" aria-hidden="true" href="#example-workflow">#</a></h3>
+<ol>
+<li>
+<p><strong>Anonymize Data</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">anonymizedData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">anonymizer</span>.<span style="color:#a6e22e">getAnonymizedData</span>(<span style="color:#e6db74">&#34;EmployeeService.Employee&#34;</span>, [<span style="color:#ae81ff">1001</span>]);
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Generate Vector Embeddings</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">embedding</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">aiCoreClient</span>.<span style="color:#a6e22e">createEmbedding</span>(<span style="color:#a6e22e">anonymizedData</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">UPDATE</span>(<span style="color:#e6db74">&#39;Documents&#39;</span>).<span style="color:#a6e22e">set</span>({ <span style="color:#a6e22e">embedding</span> }).<span style="color:#a6e22e">where</span>({ <span style="color:#a6e22e">ID</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">ID</span> });
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Perform Similarity Search and Generate Response</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryEmbedding</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">aiCoreClient</span>.<span style="color:#a6e22e">createEmbedding</span>(<span style="color:#a6e22e">queryText</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">cds</span>.<span style="color:#a6e22e">run</span>(<span style="color:#a6e22e">SELECT</span>.<span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#39;Documents&#39;</span>).<span style="color:#a6e22e">where</span><span style="color:#e6db74">`similarity(embedding, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">queryEmbedding</span><span style="color:#e6db74">}</span><span style="color:#e6db74">) &gt; 0.8`</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">relevantDocs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">doc</span> =&gt; <span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">content</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;\n&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">aiCoreClient</span>.<span style="color:#a6e22e">generateResponse</span>(<span style="color:#a6e22e">queryText</span>, <span style="color:#a6e22e">relevantDocs</span>);
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h3>
+<p>By leveraging the SAP CAP LLM Plugin and CAP AI Vector Engine, developers can create powerful, privacy-conscious AI applications. These tools ensure that sensitive data is protected while enabling advanced AI capabilities, paving the way for innovative and compliant solutions in the SAP ecosystem.</p>
+<p>For detailed examples and code snippets, refer to the <a href="https://github.com/SAP-samples/cap-llm-plugin-samples">CAP LLM Plugin Samples</a> and <a href="https://github.com/SAP-samples/cap-ai-vector-engine-sample">CAP AI Vector Engine Sample</a> repositories. For more insights on data privacy and anonymization techniques, check out the <a href="https://community.sap.com/t5/technology-blogs-by-sap/elevating-data-privacy-in-sap-cap-based-genai-applications-with-cap-llm/ba-p/13585745">SAP Community Blog</a>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">Fayaz Mammoo</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
