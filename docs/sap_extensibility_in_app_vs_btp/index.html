@@ -7,10 +7,9 @@
 <meta name="robots" content="index, follow">
 <title>Simplifying SAP Extensibility: In-App vs. Side-by-Side | Fayaz Mammoo</title>
 <meta name="keywords" content="">
-<meta name="description" content="When working with SAP solutions, the big question is: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s explore both options, along with real-world examples to help you make an informed decision.
-In-App Extensibility (SAP S/4HANA Cloud) In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.
-Examples Modify Fiori UIs:
-Add a custom field like “Delivery Priority” to your sales order app for better prioritization.">
+<meta name="description" content="When working with SAP solutions, one key question always arises: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s break it down using the extensibility patterns from the image.
+In-App Extensibility (SAP S/4HANA Cloud) In-App Extensibility focuses on enhancing the core SAP system directly. It’s ideal for quick, straightforward changes that don’t require external integrations.
+Supported Patterns: Adapt existing Fiori UIs Create custom forms or email templates Add custom fields or business objects Create queries for analytics Define workflows and rules Enable process integration and data replication Examples Based on the Patterns: Modify Fiori UI: Add a “Delivery Priority” dropdown to the sales order app.">
 <meta name="author" content="">
 <link rel="canonical" href="https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
@@ -59,10 +58,9 @@ Add a custom field like “Delivery Priority” to your sales order app for bett
 
     </style>
 </noscript><meta property="og:title" content="Simplifying SAP Extensibility: In-App vs. Side-by-Side" />
-<meta property="og:description" content="When working with SAP solutions, the big question is: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s explore both options, along with real-world examples to help you make an informed decision.
-In-App Extensibility (SAP S/4HANA Cloud) In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.
-Examples Modify Fiori UIs:
-Add a custom field like “Delivery Priority” to your sales order app for better prioritization." />
+<meta property="og:description" content="When working with SAP solutions, one key question always arises: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s break it down using the extensibility patterns from the image.
+In-App Extensibility (SAP S/4HANA Cloud) In-App Extensibility focuses on enhancing the core SAP system directly. It’s ideal for quick, straightforward changes that don’t require external integrations.
+Supported Patterns: Adapt existing Fiori UIs Create custom forms or email templates Add custom fields or business objects Create queries for analytics Define workflows and rules Enable process integration and data replication Examples Based on the Patterns: Modify Fiori UI: Add a “Delivery Priority” dropdown to the sales order app." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2024-12-01T00:00:00+00:00" />
@@ -70,10 +68,9 @@ Add a custom field like “Delivery Priority” to your sales order app for bett
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Simplifying SAP Extensibility: In-App vs. Side-by-Side"/>
-<meta name="twitter:description" content="When working with SAP solutions, the big question is: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s explore both options, along with real-world examples to help you make an informed decision.
-In-App Extensibility (SAP S/4HANA Cloud) In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.
-Examples Modify Fiori UIs:
-Add a custom field like “Delivery Priority” to your sales order app for better prioritization."/>
+<meta name="twitter:description" content="When working with SAP solutions, one key question always arises: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s break it down using the extensibility patterns from the image.
+In-App Extensibility (SAP S/4HANA Cloud) In-App Extensibility focuses on enhancing the core SAP system directly. It’s ideal for quick, straightforward changes that don’t require external integrations.
+Supported Patterns: Adapt existing Fiori UIs Create custom forms or email templates Add custom fields or business objects Create queries for analytics Define workflows and rules Enable process integration and data replication Examples Based on the Patterns: Modify Fiori UI: Add a “Delivery Priority” dropdown to the sales order app."/>
 
 
 <script type="application/ld+json">
@@ -102,12 +99,12 @@ Add a custom field like “Delivery Priority” to your sales order app for bett
   "@type": "BlogPosting",
   "headline": "Simplifying SAP Extensibility: In-App vs. Side-by-Side",
   "name": "Simplifying SAP Extensibility: In-App vs. Side-by-Side",
-  "description": "When working with SAP solutions, the big question is: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s explore both options, along with real-world examples to help you make an informed decision.\nIn-App Extensibility (SAP S/4HANA Cloud) In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.\nExamples Modify Fiori UIs:\nAdd a custom field like “Delivery Priority” to your sales order app for better prioritization.",
+  "description": "When working with SAP solutions, one key question always arises: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s break it down using the extensibility patterns from the image.\nIn-App Extensibility (SAP S/4HANA Cloud) In-App Extensibility focuses on enhancing the core SAP system directly. It’s ideal for quick, straightforward changes that don’t require external integrations.\nSupported Patterns: Adapt existing Fiori UIs Create custom forms or email templates Add custom fields or business objects Create queries for analytics Define workflows and rules Enable process integration and data replication Examples Based on the Patterns: Modify Fiori UI: Add a “Delivery Priority” dropdown to the sales order app.",
   "keywords": [
     
   ],
-  "articleBody": "When working with SAP solutions, the big question is: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s explore both options, along with real-world examples to help you make an informed decision.\nIn-App Extensibility (SAP S/4HANA Cloud) In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.\nExamples Modify Fiori UIs:\nAdd a custom field like “Delivery Priority” to your sales order app for better prioritization.\nAdd Custom Business Logic:\nImplement country-specific tax rules directly in S/4HANA to comply with local regulations.\nCreate Custom Queries:\nBuild queries to track overdue purchase orders or monitor stock levels in real time.\nAutomate Workflows:\nUse workflows for approval processes, like purchase requisition approvals.\nData Replication:\nSeamlessly replicate master data across your system for consistency.\nSide-by-Side Extensibility (SAP BTP) Side-by-Side extensibility leverages SAP Business Technology Platform (BTP) for scalable, flexible, and independent solutions. It’s ideal for integrating with external systems and driving innovation without touching the core system.\nExamples Build Custom Apps:\nDevelop a supplier performance dashboard that integrates data from SAP and logistics providers.\nIntegrate 3rd-Party Tools:\nSync customer interactions from Salesforce or Microsoft Teams with SAP data for better insights.\nEvent-Driven Workflows:\nAutomate vendor onboarding using SAP BTP Workflow Service, triggered by specific events.\nExtend Without Disrupting the Core:\nCreate an IoT dashboard or a predictive analytics app for business needs, completely independent of your SAP core.\nProcess Integration:\nStreamline processes by connecting SAP with external APIs or systems like payment gateways or shipping services.\nKey Insights In-App Extensibility: Best for quick and straightforward enhancements like adding fields, logic tweaks, or workflows within SAP S/4HANA. Side-by-Side Extensibility: Perfect for larger-scale projects requiring flexibility, innovation, and integration with external systems. When to Choose What? Use In-App Extensibility when you need quick, core enhancements. Opt for Side-by-Side Extensibility for complex workflows, independent apps, or integrations with third-party systems. Real-World Scenarios Scenario 1: Extending Sales Order Processing In-App: Add a “Delivery Priority” field and enable filtering in the standard Fiori app. Side-by-Side: Build a custom app that analyzes delivery performance and integrates with shipping providers. Scenario 2: Vendor Management In-App: Create a custom query to monitor overdue invoices. Side-by-Side: Develop an event-driven app that triggers automated reminders to vendors for overdue invoices. Scenario 3: Customer Interaction In-App: Add custom logic for calculating discounts directly in the sales order app. Side-by-Side: Build a chatbot using SAP Conversational AI to answer customer inquiries and integrate it with Microsoft Teams. Conclusion Both extensibility approaches have their place. In-App Extensibility focuses on enhancing the core, while Side-by-Side Extensibility unlocks opportunities for innovation and scalability. The right choice depends on your specific business needs and goals.\nHow are you leveraging these extensibility options in your projects? Share your experiences in the comments!\nTags #SAP #BTP #S4HANACloud #Extensibility #Innovation #DigitalTransformation #RealWorldExamples\n",
-  "wordCount" : "476",
+  "articleBody": "When working with SAP solutions, one key question always arises: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s break it down using the extensibility patterns from the image.\nIn-App Extensibility (SAP S/4HANA Cloud) In-App Extensibility focuses on enhancing the core SAP system directly. It’s ideal for quick, straightforward changes that don’t require external integrations.\nSupported Patterns: Adapt existing Fiori UIs Create custom forms or email templates Add custom fields or business objects Create queries for analytics Define workflows and rules Enable process integration and data replication Examples Based on the Patterns: Modify Fiori UI: Add a “Delivery Priority” dropdown to the sales order app. Custom Fields: Include a “Preferred Supplier” field in procurement documents. Queries: Create a query to list overdue invoices for follow-up. Workflows: Automate the approval process for purchase orders based on thresholds. Side-by-Side Extensibility (SAP BTP) Side-by-Side Extensibility leverages SAP BTP for flexible, scalable innovations that operate outside the SAP core.\nSupported Patterns: Develop independent or dependent custom applications Integrate third-party tools and applications Build event-driven workflows and services Enable advanced process integration and data replication Examples Based on the Patterns: Custom Application: Build a supplier performance dashboard combining SAP data with logistics metrics from external providers. Third-Party Integration: Integrate Salesforce with SAP for synchronized customer data. Event-Driven Workflows: Trigger alerts for stock replenishment when inventory levels are critically low. Advanced Process Integration: Connect SAP with payment gateways for automated billing and reconciliation. Key Insights In-App Extensibility is perfect for enhancing the SAP core with minimal complexity. Side-by-Side Extensibility unlocks the flexibility to innovate and scale, especially when integrating external systems or creating independent applications. Conclusion Choosing the right extensibility option depends on your business needs:\nUse In-App Extensibility for small, core-centric changes. Opt for Side-by-Side Extensibility for advanced integrations and innovation outside the core SAP system. Tags #SAP #BTP #S4HANACloud #Extensibility #Innovation #EnterpriseApps\n",
+  "wordCount" : "310",
   "inLanguage": "en",
   "datePublished": "2024-12-01T00:00:00Z",
   "dateModified": "2024-12-01T00:00:00Z",
@@ -182,95 +179,59 @@ Add a custom field like “Delivery Priority” to your sales order app for bett
 
 </div>
   </header> 
-  <div class="post-content"><p>When working with SAP solutions, the big question is: <strong>Should you extend In-App or go Side-by-Side with SAP BTP?</strong> Let’s explore both options, along with <strong>real-world examples</strong> to help you make an informed decision.</p>
+  <div class="post-content"><p>When working with SAP solutions, one key question always arises: <strong>Should you extend In-App or go Side-by-Side with SAP BTP?</strong> Let’s break it down using the extensibility patterns from the image.</p>
 <hr>
 <h2 id="in-app-extensibility-sap-s4hana-cloud"><strong>In-App Extensibility</strong> (SAP S/4HANA Cloud)<a hidden class="anchor" aria-hidden="true" href="#in-app-extensibility-sap-s4hana-cloud">#</a></h2>
-<p>In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.</p>
-<h3 id="examples"><strong>Examples</strong><a hidden class="anchor" aria-hidden="true" href="#examples">#</a></h3>
+<p>In-App Extensibility focuses on enhancing the core SAP system directly. It’s ideal for quick, straightforward changes that don’t require external integrations.</p>
+<h3 id="supported-patterns"><strong>Supported Patterns</strong>:<a hidden class="anchor" aria-hidden="true" href="#supported-patterns">#</a></h3>
+<ul>
+<li>Adapt existing Fiori UIs</li>
+<li>Create custom forms or email templates</li>
+<li>Add custom fields or business objects</li>
+<li>Create queries for analytics</li>
+<li>Define workflows and rules</li>
+<li>Enable process integration and data replication</li>
+</ul>
+<h3 id="examples-based-on-the-patterns"><strong>Examples Based on the Patterns</strong>:<a hidden class="anchor" aria-hidden="true" href="#examples-based-on-the-patterns">#</a></h3>
 <ol>
-<li>
-<p><strong>Modify Fiori UIs</strong>:<br>
-Add a custom field like “Delivery Priority” to your sales order app for better prioritization.</p>
-</li>
-<li>
-<p><strong>Add Custom Business Logic</strong>:<br>
-Implement country-specific tax rules directly in S/4HANA to comply with local regulations.</p>
-</li>
-<li>
-<p><strong>Create Custom Queries</strong>:<br>
-Build queries to track overdue purchase orders or monitor stock levels in real time.</p>
-</li>
-<li>
-<p><strong>Automate Workflows</strong>:<br>
-Use workflows for approval processes, like purchase requisition approvals.</p>
-</li>
-<li>
-<p><strong>Data Replication</strong>:<br>
-Seamlessly replicate master data across your system for consistency.</p>
-</li>
+<li><strong>Modify Fiori UI</strong>: Add a “Delivery Priority” dropdown to the sales order app.</li>
+<li><strong>Custom Fields</strong>: Include a “Preferred Supplier” field in procurement documents.</li>
+<li><strong>Queries</strong>: Create a query to list overdue invoices for follow-up.</li>
+<li><strong>Workflows</strong>: Automate the approval process for purchase orders based on thresholds.</li>
 </ol>
 <hr>
 <h2 id="side-by-side-extensibility-sap-btp"><strong>Side-by-Side Extensibility</strong> (SAP BTP)<a hidden class="anchor" aria-hidden="true" href="#side-by-side-extensibility-sap-btp">#</a></h2>
-<p>Side-by-Side extensibility leverages SAP Business Technology Platform (BTP) for scalable, flexible, and independent solutions. It’s ideal for integrating with external systems and driving innovation without touching the core system.</p>
-<h3 id="examples-1"><strong>Examples</strong><a hidden class="anchor" aria-hidden="true" href="#examples-1">#</a></h3>
+<p>Side-by-Side Extensibility leverages SAP BTP for flexible, scalable innovations that operate outside the SAP core.</p>
+<h3 id="supported-patterns-1"><strong>Supported Patterns</strong>:<a hidden class="anchor" aria-hidden="true" href="#supported-patterns-1">#</a></h3>
+<ul>
+<li>Develop independent or dependent custom applications</li>
+<li>Integrate third-party tools and applications</li>
+<li>Build event-driven workflows and services</li>
+<li>Enable advanced process integration and data replication</li>
+</ul>
+<h3 id="examples-based-on-the-patterns-1"><strong>Examples Based on the Patterns</strong>:<a hidden class="anchor" aria-hidden="true" href="#examples-based-on-the-patterns-1">#</a></h3>
 <ol>
-<li>
-<p><strong>Build Custom Apps</strong>:<br>
-Develop a supplier performance dashboard that integrates data from SAP and logistics providers.</p>
-</li>
-<li>
-<p><strong>Integrate 3rd-Party Tools</strong>:<br>
-Sync customer interactions from Salesforce or Microsoft Teams with SAP data for better insights.</p>
-</li>
-<li>
-<p><strong>Event-Driven Workflows</strong>:<br>
-Automate vendor onboarding using SAP BTP Workflow Service, triggered by specific events.</p>
-</li>
-<li>
-<p><strong>Extend Without Disrupting the Core</strong>:<br>
-Create an IoT dashboard or a predictive analytics app for business needs, completely independent of your SAP core.</p>
-</li>
-<li>
-<p><strong>Process Integration</strong>:<br>
-Streamline processes by connecting SAP with external APIs or systems like payment gateways or shipping services.</p>
-</li>
+<li><strong>Custom Application</strong>: Build a supplier performance dashboard combining SAP data with logistics metrics from external providers.</li>
+<li><strong>Third-Party Integration</strong>: Integrate Salesforce with SAP for synchronized customer data.</li>
+<li><strong>Event-Driven Workflows</strong>: Trigger alerts for stock replenishment when inventory levels are critically low.</li>
+<li><strong>Advanced Process Integration</strong>: Connect SAP with payment gateways for automated billing and reconciliation.</li>
 </ol>
 <hr>
 <h2 id="key-insights"><strong>Key Insights</strong><a hidden class="anchor" aria-hidden="true" href="#key-insights">#</a></h2>
 <ul>
-<li><strong>In-App Extensibility</strong>: Best for quick and straightforward enhancements like adding fields, logic tweaks, or workflows within SAP S/4HANA.</li>
-<li><strong>Side-by-Side Extensibility</strong>: Perfect for larger-scale projects requiring flexibility, innovation, and integration with external systems.</li>
-</ul>
-<hr>
-<h2 id="when-to-choose-what"><strong>When to Choose What?</strong><a hidden class="anchor" aria-hidden="true" href="#when-to-choose-what">#</a></h2>
-<ul>
-<li>Use <strong>In-App Extensibility</strong> when you need quick, core enhancements.</li>
-<li>Opt for <strong>Side-by-Side Extensibility</strong> for complex workflows, independent apps, or integrations with third-party systems.</li>
-</ul>
-<hr>
-<h2 id="real-world-scenarios"><strong>Real-World Scenarios</strong><a hidden class="anchor" aria-hidden="true" href="#real-world-scenarios">#</a></h2>
-<h3 id="scenario-1-extending-sales-order-processing"><strong>Scenario 1: Extending Sales Order Processing</strong><a hidden class="anchor" aria-hidden="true" href="#scenario-1-extending-sales-order-processing">#</a></h3>
-<ul>
-<li><strong>In-App</strong>: Add a “Delivery Priority” field and enable filtering in the standard Fiori app.</li>
-<li><strong>Side-by-Side</strong>: Build a custom app that analyzes delivery performance and integrates with shipping providers.</li>
-</ul>
-<h3 id="scenario-2-vendor-management"><strong>Scenario 2: Vendor Management</strong><a hidden class="anchor" aria-hidden="true" href="#scenario-2-vendor-management">#</a></h3>
-<ul>
-<li><strong>In-App</strong>: Create a custom query to monitor overdue invoices.</li>
-<li><strong>Side-by-Side</strong>: Develop an event-driven app that triggers automated reminders to vendors for overdue invoices.</li>
-</ul>
-<h3 id="scenario-3-customer-interaction"><strong>Scenario 3: Customer Interaction</strong><a hidden class="anchor" aria-hidden="true" href="#scenario-3-customer-interaction">#</a></h3>
-<ul>
-<li><strong>In-App</strong>: Add custom logic for calculating discounts directly in the sales order app.</li>
-<li><strong>Side-by-Side</strong>: Build a chatbot using SAP Conversational AI to answer customer inquiries and integrate it with Microsoft Teams.</li>
+<li><strong>In-App Extensibility</strong> is perfect for enhancing the SAP core with minimal complexity.</li>
+<li><strong>Side-by-Side Extensibility</strong> unlocks the flexibility to innovate and scale, especially when integrating external systems or creating independent applications.</li>
 </ul>
 <hr>
 <h2 id="conclusion"><strong>Conclusion</strong><a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
-<p>Both extensibility approaches have their place. <strong>In-App Extensibility</strong> focuses on enhancing the core, while <strong>Side-by-Side Extensibility</strong> unlocks opportunities for innovation and scalability. The right choice depends on your specific business needs and goals.</p>
-<p>How are you leveraging these extensibility options in your projects? Share your experiences in the comments!</p>
+<p>Choosing the right extensibility option depends on your business needs:</p>
+<ul>
+<li>Use <strong>In-App Extensibility</strong> for small, core-centric changes.</li>
+<li>Opt for <strong>Side-by-Side Extensibility</strong> for advanced integrations and innovation outside the core SAP system.</li>
+</ul>
 <hr>
 <h3 id="tags"><strong>Tags</strong><a hidden class="anchor" aria-hidden="true" href="#tags">#</a></h3>
-<p>#SAP #BTP #S4HANACloud #Extensibility #Innovation #DigitalTransformation #RealWorldExamples</p>
+<p>#SAP #BTP #S4HANACloud #Extensibility #Innovation #EnterpriseApps</p>
 
 
   </div>
