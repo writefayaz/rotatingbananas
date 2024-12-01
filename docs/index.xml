@@ -6,8 +6,18 @@
     <description>Recent content in Docs on Fayaz Mammoo</description>
     <generator>Hugo -- 0.124.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://rotatingbananas.com/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simplifying SAP Extensibility: In-App vs. Side-by-Side</title>
+      <link>https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp/</link>
+      <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp/</guid>
+      <description>When working with SAP solutions, the big question is: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s explore both options, along with real-world examples to help you make an informed decision.
+In-App Extensibility (SAP S/4HANA Cloud) In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.
+Examples Modify Fiori UIs:
+Add a custom field like “Delivery Priority” to your sales order app for better prioritization.</description>
+    </item>
     <item>
       <title>Leveraging AI in SAP with CAP and HANA Cloud&#39;s Vector Engine</title>
       <link>https://rotatingbananas.com/docs/leveraging-generative-ai-vector-engine-cap/</link>
@@ -22,14 +32,6 @@
       <guid>https://rotatingbananas.com/docs/leveraging-generative-ai-hub/</guid>
       <description>In the rapidly evolving world of artificial intelligence, generative AI technologies have become a cornerstone for innovative applications across various industries. As demonstrated in SAP&amp;rsquo;s recent tech bite, the Generative AI Hub on SAP Launchpad provides a robust platform for developers looking to explore and implement sophisticated AI-driven solutions. Here&amp;rsquo;s how you can leverage this powerful tool to enhance your applications and drive innovation.
 Exploring the SAP Generative AI Hub The Generative AI Hub is designed to facilitate easy interaction with AI models through REST API calls from any programming environment, be it JavaScript, Python, or others.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp/</guid>
-      <description>🚀 Simplifying SAP Extensibility: In-App vs. Side-by-Side 🚀 When working with SAP solutions, the big question is: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s explore both options, along with real-world examples to help you make an informed decision.
-In-App Extensibility (SAP S/4HANA Cloud) In-App extensibility is perfect for tweaking the core system with minimal disruption. It allows you to stay within SAP S/4HANA while enhancing standard functionality.</description>
     </item>
   </channel>
 </rss>
