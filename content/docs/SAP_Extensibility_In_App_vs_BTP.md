@@ -1,5 +1,8 @@
-
-# 🚀 Simplifying SAP Extensibility: In-App vs. Side-by-Side 🚀  
+---
+title: "Simplifying SAP Extensibility: In-App vs. Side-by-Side"
+date: 2024-12-01
+draft: false
+---
 
 When working with SAP solutions, the big question is: **Should you extend In-App or go Side-by-Side with SAP BTP?** Let’s explore both options, along with **real-world examples** to help you make an informed decision.  
 
