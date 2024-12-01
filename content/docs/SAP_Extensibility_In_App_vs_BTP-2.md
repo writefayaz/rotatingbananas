@@ -4,7 +4,7 @@ date: 2024-12-01
 draft: false
 ---
 
-When working with SAP solutions, one key question always arises: **Should you extend In-App or go Side-by-Side with SAP BTP?** Let’s break it down using the extensibility patterns from the image.
+When working with SAP solutions, one key question always arises: **Should you extend In-App or go Side-by-Side with SAP BTP?**
 
 ---
 
