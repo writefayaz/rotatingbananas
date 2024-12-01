@@ -40,7 +40,7 @@ Side-by-Side Extensibility leverages SAP BTP for flexible, scalable innovations 
 
 ### **Examples Based on the Patterns**:  
 1. **Custom Application**: Build a supplier performance dashboard combining SAP data with logistics metrics from external providers.  
-2. **Third-Party Integration**: Integrate Salesforce with SAP for synchronized customer data.  
+2. **Third-Party Integration**: Integrate Salesforce/SugarCRM/Dynamics with SAP for synchronized customer data.  
 3. **Event-Driven Workflows**: Trigger alerts for stock replenishment when inventory levels are critically low.  
 4. **Advanced Process Integration**: Connect SAP with payment gateways for automated billing and reconciliation.  
 
