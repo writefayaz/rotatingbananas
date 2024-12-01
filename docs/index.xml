@@ -13,7 +13,7 @@
       <link>https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp-2/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://rotatingbananas.com/docs/sap_extensibility_in_app_vs_btp-2/</guid>
-      <description>When working with SAP solutions, one key question always arises: Should you extend In-App or go Side-by-Side with SAP BTP? Let’s break it down using the extensibility patterns from the image.
+      <description>When working with SAP solutions, one key question always arises: Should you extend In-App or go Side-by-Side with SAP BTP?
 In-App Extensibility (SAP S/4HANA Cloud) In-App Extensibility focuses on enhancing the core SAP system directly. It’s ideal for quick, straightforward changes that don’t require external integrations.
 Supported Patterns: Adapt existing Fiori UIs Create custom forms or email templates Add custom fields or business objects Create queries for analytics Define workflows and rules Enable process integration and data replication Examples Based on the Patterns: Modify Fiori UI: Add a “Delivery Priority” dropdown to the sales order app.</description>
     </item>
