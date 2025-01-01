@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval | Fayaz Mammoo</title>
+<meta name="keywords" content="">
+<meta name="description" content="Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval
+In modern applications, retrieving accurate and relevant information is critical, especially in systems dealing with ambiguous or incomplete user inputs. A practical use case is retrieving a customer code from a database using a customer&rsquo;s name, even if the input contains spelling errors or partial names. Vector databases, combined with metadata, provide an efficient solution for this challenge.
+This blog explores how to leverage metadata in vector databases to refine searches, handle ambiguities, and improve the retrieval process using Python.">
+<meta name="author" content="">
+<link rel="canonical" href="https://rotatingbananas.com/docs/leveraging-metadata-in-vector-databases/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://rotatingbananas.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://rotatingbananas.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://rotatingbananas.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://rotatingbananas.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://rotatingbananas.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://rotatingbananas.com/docs/leveraging-metadata-in-vector-databases/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval" />
+<meta property="og:description" content="Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval
+In modern applications, retrieving accurate and relevant information is critical, especially in systems dealing with ambiguous or incomplete user inputs. A practical use case is retrieving a customer code from a database using a customer&rsquo;s name, even if the input contains spelling errors or partial names. Vector databases, combined with metadata, provide an efficient solution for this challenge.
+This blog explores how to leverage metadata in vector databases to refine searches, handle ambiguities, and improve the retrieval process using Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rotatingbananas.com/docs/leveraging-metadata-in-vector-databases/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2025-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-01-01T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval"/>
+<meta name="twitter:description" content="Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval
+In modern applications, retrieving accurate and relevant information is critical, especially in systems dealing with ambiguous or incomplete user inputs. A practical use case is retrieving a customer code from a database using a customer&rsquo;s name, even if the input contains spelling errors or partial names. Vector databases, combined with metadata, provide an efficient solution for this challenge.
+This blog explores how to leverage metadata in vector databases to refine searches, handle ambiguities, and improve the retrieval process using Python."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Docs",
+      "item": "https://rotatingbananas.com/docs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval",
+      "item": "https://rotatingbananas.com/docs/leveraging-metadata-in-vector-databases/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval",
+  "name": "Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval",
+  "description": "Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval\nIn modern applications, retrieving accurate and relevant information is critical, especially in systems dealing with ambiguous or incomplete user inputs. A practical use case is retrieving a customer code from a database using a customer\u0026rsquo;s name, even if the input contains spelling errors or partial names. Vector databases, combined with metadata, provide an efficient solution for this challenge.\nThis blog explores how to leverage metadata in vector databases to refine searches, handle ambiguities, and improve the retrieval process using Python.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval\nIn modern applications, retrieving accurate and relevant information is critical, especially in systems dealing with ambiguous or incomplete user inputs. A practical use case is retrieving a customer code from a database using a customer’s name, even if the input contains spelling errors or partial names. Vector databases, combined with metadata, provide an efficient solution for this challenge.\nThis blog explores how to leverage metadata in vector databases to refine searches, handle ambiguities, and improve the retrieval process using Python.\nWhy Use a Vector Database? Vector databases excel in handling semantic similarity searches by leveraging vector embeddings. Instead of relying on exact matches, embeddings capture the semantic essence of data, enabling searches that tolerate spelling errors and partial inputs. However, raw vector similarity might not always be enough. This is where metadata comes into play.\nWhat is Metadata? Metadata is auxiliary information stored alongside vector embeddings. It provides context about the entities represented by the embeddings and can be used to filter, refine, or rank search results.\nFor example:\nVector: Embedding representation of a customer name. Metadata: Additional attributes like {\"name\": \"John Doe\", \"code\": \"CUST001\", \"region\": \"North America\", \"status\": \"Active\"}. Enhancing Searches with Metadata 1. Refining Search Results Metadata allows you to filter results based on specific criteria. For example:\nRetrieve customers only from a specific region. Consider only active customers. 2. Disambiguating Similar Names When multiple embeddings have close similarity scores, metadata like status, region, or type can be used to prioritize the correct match.\n3. Contextual Searches Metadata adds layers of context, enabling targeted searches based on user-defined criteria such as customer type, language, or last updated date.\nPython Implementation Here’s how to implement a customer code retrieval system using a vector database with metadata filtering. We’ll use the Pinecone vector database and sentence-transformers for generating embeddings.\nInstall Required Libraries pip install sentence-transformers pinecone-client Store and Query Data import pinecone from sentence_transformers import SentenceTransformer # Step 1: Initialize the Embedding Model model = SentenceTransformer('all-MiniLM-L6-v2') # Step 2: Initialize Pinecone pinecone.init(api_key=\"your-pinecone-api-key\", environment=\"your-environment-name\") index_name = \"customer-search\" if index_name not in pinecone.list_indexes(): pinecone.create_index(index_name, dimension=384) # Embedding dimension is 384 index = pinecone.Index(index_name) # Step 3: Store Customer Data with Metadata customers = [ {\"name\": \"John Doe\", \"code\": \"CUST001\", \"region\": \"North America\", \"status\": \"Active\"}, {\"name\": \"Jane Smith\", \"code\": \"CUST002\", \"region\": \"Europe\", \"status\": \"Active\"}, {\"name\": \"Jon Do\", \"code\": \"CUST003\", \"region\": \"North America\", \"status\": \"Inactive\"}, {\"name\": \"Janet Smyth\", \"code\": \"CUST004\", \"region\": \"Europe\", \"status\": \"Active\"} ] # Generate embeddings and upsert into Pinecone for customer in customers: embedding = model.encode(customer[\"name\"]).tolist() index.upsert([(customer[\"code\"], embedding, {\"name\": customer[\"name\"], \"region\": customer[\"region\"], \"status\": customer[\"status\"]})]) print(\"Customer data inserted into the vector database.\") # Step 4: Query the Database with Metadata Filtering def retrieve_customer_code(query_name, region=None, status=None): # Generate embedding for the query name query_embedding = model.encode(query_name).tolist() # Create metadata filter metadata_filter = {} if region: metadata_filter[\"region\"] = region if status: metadata_filter[\"status\"] = status # Perform vector search with metadata filtering search_results = index.query( vector=query_embedding, top_k=3, filter=metadata_filter, include_metadata=True ) # Parse results if search_results[\"matches\"]: best_match = search_results[\"matches\"][0] customer_name = best_match[\"metadata\"][\"name\"] customer_code = best_match[\"id\"] # ID is stored as the customer code similarity_score = best_match[\"score\"] print(f\"Query Name: {query_name}\") print(f\"Best Match: {customer_name} (Code: {customer_code}, Score: {similarity_score:.2f})\") print(f\"Metadata: {best_match['metadata']}\") return customer_code else: print(\"No match found.\") return None # Example Query query_name = \"Jhn Do\" # Intentionally misspelled customer_code = retrieve_customer_code(query_name, region=\"North America\", status=\"Active\") if customer_code: print(f\"Retrieved Customer Code: {customer_code}\") Output Scenario Query Name: \"Jhn Do\" Metadata Filter: {\"region\": \"North America\", \"status\": \"Active\"} Result Query Name: Jhn Do Best Match: John Doe (Code: CUST001, Score: 0.91) Metadata: {'name': 'John Doe', 'region': 'North America', 'status': 'Active'} Retrieved Customer Code: CUST001 Key Benefits of Using Metadata Precision:\nFilters irrelevant results using additional criteria. Disambiguation:\nResolves conflicts between similar embeddings (e.g., “Jon Do” vs. “John Doe”). Flexibility:\nSupports dynamic queries based on context, such as geographical region or customer activity status. Scalability:\nEfficiently handles large datasets with advanced filtering capabilities. Conclusion Metadata enhances the power of vector databases by providing context and refining search results. By combining semantic embeddings with metadata filters, we can create robust systems capable of handling real-world challenges like misspelled or incomplete inputs.\nWith the provided Python implementation, you can quickly build a scalable and precise customer code retrieval system. As vector databases continue to evolve, leveraging metadata will remain a key strategy for improving search relevance and accuracy.\nWould you like to explore more advanced use cases or further optimize the solution? Let me know in the comments!\n",
+  "wordCount" : "742",
+  "inLanguage": "en",
+  "datePublished": "2025-01-01T00:00:00Z",
+  "dateModified": "2025-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://rotatingbananas.com/docs/leveraging-metadata-in-vector-databases/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fayaz Mammoo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rotatingbananas.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://rotatingbananas.com/" accesskey="h" title="Fayaz Mammoo (Alt + H)">Fayaz Mammoo</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval
+    </h1>
+    <div class="post-meta"><span title='2025-01-01 00:00:00 +0000 UTC'>January 1, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval</p>
+<p>In modern applications, retrieving accurate and relevant information is critical, especially in systems dealing with ambiguous or incomplete user inputs. A practical use case is retrieving a customer code from a database using a customer&rsquo;s name, even if the input contains spelling errors or partial names. Vector databases, combined with metadata, provide an efficient solution for this challenge.</p>
+<p>This blog explores how to leverage metadata in vector databases to refine searches, handle ambiguities, and improve the retrieval process using Python.</p>
+<hr>
+<h2 id="why-use-a-vector-database"><strong>Why Use a Vector Database?</strong><a hidden class="anchor" aria-hidden="true" href="#why-use-a-vector-database">#</a></h2>
+<p>Vector databases excel in handling semantic similarity searches by leveraging vector embeddings. Instead of relying on exact matches, embeddings capture the semantic essence of data, enabling searches that tolerate spelling errors and partial inputs. However, raw vector similarity might not always be enough. This is where metadata comes into play.</p>
+<h3 id="what-is-metadata"><strong>What is Metadata?</strong><a hidden class="anchor" aria-hidden="true" href="#what-is-metadata">#</a></h3>
+<p>Metadata is auxiliary information stored alongside vector embeddings. It provides context about the entities represented by the embeddings and can be used to filter, refine, or rank search results.</p>
+<p>For example:</p>
+<ul>
+<li><strong>Vector</strong>: Embedding representation of a customer name.</li>
+<li><strong>Metadata</strong>: Additional attributes like <code>{&quot;name&quot;: &quot;John Doe&quot;, &quot;code&quot;: &quot;CUST001&quot;, &quot;region&quot;: &quot;North America&quot;, &quot;status&quot;: &quot;Active&quot;}</code>.</li>
+</ul>
+<hr>
+<h2 id="enhancing-searches-with-metadata"><strong>Enhancing Searches with Metadata</strong><a hidden class="anchor" aria-hidden="true" href="#enhancing-searches-with-metadata">#</a></h2>
+<h3 id="1-refining-search-results"><strong>1. Refining Search Results</strong><a hidden class="anchor" aria-hidden="true" href="#1-refining-search-results">#</a></h3>
+<p>Metadata allows you to filter results based on specific criteria. For example:</p>
+<ul>
+<li>Retrieve customers only from a specific region.</li>
+<li>Consider only active customers.</li>
+</ul>
+<h3 id="2-disambiguating-similar-names"><strong>2. Disambiguating Similar Names</strong><a hidden class="anchor" aria-hidden="true" href="#2-disambiguating-similar-names">#</a></h3>
+<p>When multiple embeddings have close similarity scores, metadata like <code>status</code>, <code>region</code>, or <code>type</code> can be used to prioritize the correct match.</p>
+<h3 id="3-contextual-searches"><strong>3. Contextual Searches</strong><a hidden class="anchor" aria-hidden="true" href="#3-contextual-searches">#</a></h3>
+<p>Metadata adds layers of context, enabling targeted searches based on user-defined criteria such as customer type, language, or last updated date.</p>
+<hr>
+<h2 id="python-implementation"><strong>Python Implementation</strong><a hidden class="anchor" aria-hidden="true" href="#python-implementation">#</a></h2>
+<p>Here’s how to implement a customer code retrieval system using a vector database with metadata filtering. We&rsquo;ll use the <strong>Pinecone</strong> vector database and <strong>sentence-transformers</strong> for generating embeddings.</p>
+<h3 id="install-required-libraries"><strong>Install Required Libraries</strong><a hidden class="anchor" aria-hidden="true" href="#install-required-libraries">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install sentence-transformers pinecone-client
+</span></span></code></pre></div><h3 id="store-and-query-data"><strong>Store and Query Data</strong><a hidden class="anchor" aria-hidden="true" href="#store-and-query-data">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pinecone
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sentence_transformers <span style="color:#f92672">import</span> SentenceTransformer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 1: Initialize the Embedding Model</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> SentenceTransformer(<span style="color:#e6db74">&#39;all-MiniLM-L6-v2&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: Initialize Pinecone</span>
+</span></span><span style="display:flex;"><span>pinecone<span style="color:#f92672">.</span>init(api_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;your-pinecone-api-key&#34;</span>, environment<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;your-environment-name&#34;</span>)
+</span></span><span style="display:flex;"><span>index_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;customer-search&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> index_name <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> pinecone<span style="color:#f92672">.</span>list_indexes():
+</span></span><span style="display:flex;"><span>    pinecone<span style="color:#f92672">.</span>create_index(index_name, dimension<span style="color:#f92672">=</span><span style="color:#ae81ff">384</span>)  <span style="color:#75715e"># Embedding dimension is 384</span>
+</span></span><span style="display:flex;"><span>index <span style="color:#f92672">=</span> pinecone<span style="color:#f92672">.</span>Index(index_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: Store Customer Data with Metadata</span>
+</span></span><span style="display:flex;"><span>customers <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;John Doe&#34;</span>, <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#e6db74">&#34;CUST001&#34;</span>, <span style="color:#e6db74">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;North America&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;Active&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Jane Smith&#34;</span>, <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#e6db74">&#34;CUST002&#34;</span>, <span style="color:#e6db74">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;Europe&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;Active&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Jon Do&#34;</span>, <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#e6db74">&#34;CUST003&#34;</span>, <span style="color:#e6db74">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;North America&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;Inactive&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Janet Smyth&#34;</span>, <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#e6db74">&#34;CUST004&#34;</span>, <span style="color:#e6db74">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;Europe&#34;</span>, <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;Active&#34;</span>}
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate embeddings and upsert into Pinecone</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> customer <span style="color:#f92672">in</span> customers:
+</span></span><span style="display:flex;"><span>    embedding <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>encode(customer[<span style="color:#e6db74">&#34;name&#34;</span>])<span style="color:#f92672">.</span>tolist()
+</span></span><span style="display:flex;"><span>    index<span style="color:#f92672">.</span>upsert([(customer[<span style="color:#e6db74">&#34;code&#34;</span>], embedding, {<span style="color:#e6db74">&#34;name&#34;</span>: customer[<span style="color:#e6db74">&#34;name&#34;</span>], <span style="color:#e6db74">&#34;region&#34;</span>: customer[<span style="color:#e6db74">&#34;region&#34;</span>], <span style="color:#e6db74">&#34;status&#34;</span>: customer[<span style="color:#e6db74">&#34;status&#34;</span>]})])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Customer data inserted into the vector database.&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 4: Query the Database with Metadata Filtering</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">retrieve_customer_code</span>(query_name, region<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, status<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generate embedding for the query name</span>
+</span></span><span style="display:flex;"><span>    query_embedding <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>encode(query_name)<span style="color:#f92672">.</span>tolist()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create metadata filter</span>
+</span></span><span style="display:flex;"><span>    metadata_filter <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> region:
+</span></span><span style="display:flex;"><span>        metadata_filter[<span style="color:#e6db74">&#34;region&#34;</span>] <span style="color:#f92672">=</span> region
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> status:
+</span></span><span style="display:flex;"><span>        metadata_filter[<span style="color:#e6db74">&#34;status&#34;</span>] <span style="color:#f92672">=</span> status
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Perform vector search with metadata filtering</span>
+</span></span><span style="display:flex;"><span>    search_results <span style="color:#f92672">=</span> index<span style="color:#f92672">.</span>query(
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">=</span>query_embedding,
+</span></span><span style="display:flex;"><span>        top_k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>        filter<span style="color:#f92672">=</span>metadata_filter,
+</span></span><span style="display:flex;"><span>        include_metadata<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Parse results</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> search_results[<span style="color:#e6db74">&#34;matches&#34;</span>]:
+</span></span><span style="display:flex;"><span>        best_match <span style="color:#f92672">=</span> search_results[<span style="color:#e6db74">&#34;matches&#34;</span>][<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        customer_name <span style="color:#f92672">=</span> best_match[<span style="color:#e6db74">&#34;metadata&#34;</span>][<span style="color:#e6db74">&#34;name&#34;</span>]
+</span></span><span style="display:flex;"><span>        customer_code <span style="color:#f92672">=</span> best_match[<span style="color:#e6db74">&#34;id&#34;</span>]  <span style="color:#75715e"># ID is stored as the customer code</span>
+</span></span><span style="display:flex;"><span>        similarity_score <span style="color:#f92672">=</span> best_match[<span style="color:#e6db74">&#34;score&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Query Name: </span><span style="color:#e6db74">{</span>query_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Best Match: </span><span style="color:#e6db74">{</span>customer_name<span style="color:#e6db74">}</span><span style="color:#e6db74"> (Code: </span><span style="color:#e6db74">{</span>customer_code<span style="color:#e6db74">}</span><span style="color:#e6db74">, Score: </span><span style="color:#e6db74">{</span>similarity_score<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Metadata: </span><span style="color:#e6db74">{</span>best_match[<span style="color:#e6db74">&#39;metadata&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> customer_code
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;No match found.&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Example Query</span>
+</span></span><span style="display:flex;"><span>query_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Jhn Do&#34;</span>  <span style="color:#75715e"># Intentionally misspelled</span>
+</span></span><span style="display:flex;"><span>customer_code <span style="color:#f92672">=</span> retrieve_customer_code(query_name, region<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;North America&#34;</span>, status<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Active&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> customer_code:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Retrieved Customer Code: </span><span style="color:#e6db74">{</span>customer_code<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="output"><strong>Output</strong><a hidden class="anchor" aria-hidden="true" href="#output">#</a></h2>
+<h3 id="scenario"><strong>Scenario</strong><a hidden class="anchor" aria-hidden="true" href="#scenario">#</a></h3>
+<ul>
+<li><strong>Query Name</strong>: <code>&quot;Jhn Do&quot;</code></li>
+<li><strong>Metadata Filter</strong>: <code>{&quot;region&quot;: &quot;North America&quot;, &quot;status&quot;: &quot;Active&quot;}</code></li>
+</ul>
+<h3 id="result"><strong>Result</strong><a hidden class="anchor" aria-hidden="true" href="#result">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Query Name: Jhn Do
+</span></span><span style="display:flex;"><span>Best Match: John Doe (Code: CUST001, Score: 0.91)
+</span></span><span style="display:flex;"><span>Metadata: {&#39;name&#39;: &#39;John Doe&#39;, &#39;region&#39;: &#39;North America&#39;, &#39;status&#39;: &#39;Active&#39;}
+</span></span><span style="display:flex;"><span>Retrieved Customer Code: CUST001
+</span></span></code></pre></div><hr>
+<h2 id="key-benefits-of-using-metadata"><strong>Key Benefits of Using Metadata</strong><a hidden class="anchor" aria-hidden="true" href="#key-benefits-of-using-metadata">#</a></h2>
+<ol>
+<li>
+<p><strong>Precision</strong>:</p>
+<ul>
+<li>Filters irrelevant results using additional criteria.</li>
+</ul>
+</li>
+<li>
+<p><strong>Disambiguation</strong>:</p>
+<ul>
+<li>Resolves conflicts between similar embeddings (e.g., &ldquo;Jon Do&rdquo; vs. &ldquo;John Doe&rdquo;).</li>
+</ul>
+</li>
+<li>
+<p><strong>Flexibility</strong>:</p>
+<ul>
+<li>Supports dynamic queries based on context, such as geographical region or customer activity status.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scalability</strong>:</p>
+<ul>
+<li>Efficiently handles large datasets with advanced filtering capabilities.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="conclusion"><strong>Conclusion</strong><a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Metadata enhances the power of vector databases by providing context and refining search results. By combining semantic embeddings with metadata filters, we can create robust systems capable of handling real-world challenges like misspelled or incomplete inputs.</p>
+<p>With the provided Python implementation, you can quickly build a scalable and precise customer code retrieval system. As vector databases continue to evolve, leveraging metadata will remain a key strategy for improving search relevance and accuracy.</p>
+<hr>
+<p>Would you like to explore more advanced use cases or further optimize the solution? Let me know in the comments!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://rotatingbananas.com/">Fayaz Mammoo</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
