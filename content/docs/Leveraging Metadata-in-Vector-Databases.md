@@ -4,8 +4,6 @@ date: 2025-01-01
 draft: false
 ---
 
-Leveraging Metadata in Vector Databases for Accurate Customer Code Retrieval
-
 In modern applications, retrieving accurate and relevant information is critical, especially in systems dealing with ambiguous or incomplete user inputs. A practical use case is retrieving a customer code from a database using a customer's name, even if the input contains spelling errors or partial names. Vector databases, combined with metadata, provide an efficient solution for this challenge.
 
 This blog explores how to leverage metadata in vector databases to refine searches, handle ambiguities, and improve the retrieval process using Python.
