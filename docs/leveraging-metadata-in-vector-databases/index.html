@@ -190,16 +190,16 @@ This blog explores how to leverage metadata in vector databases to refine search
 </ul>
 <hr>
 <h2 id="enhancing-searches-with-metadata"><strong>Enhancing Searches with Metadata</strong><a hidden class="anchor" aria-hidden="true" href="#enhancing-searches-with-metadata">#</a></h2>
-<h3 id="1-refining-search-results"><strong>1. Refining Search Results</strong><a hidden class="anchor" aria-hidden="true" href="#1-refining-search-results">#</a></h3>
-<p>Metadata allows you to filter results based on specific criteria. For example:</p>
+<p><strong>1. Refining Search Results</strong>
+Metadata allows you to filter results based on specific criteria. For example:</p>
 <ul>
 <li>Retrieve customers only from a specific region.</li>
 <li>Consider only active customers.</li>
 </ul>
-<h3 id="2-disambiguating-similar-names"><strong>2. Disambiguating Similar Names</strong><a hidden class="anchor" aria-hidden="true" href="#2-disambiguating-similar-names">#</a></h3>
-<p>When multiple embeddings have close similarity scores, metadata like <code>status</code>, <code>region</code>, or <code>type</code> can be used to prioritize the correct match.</p>
-<h3 id="3-contextual-searches"><strong>3. Contextual Searches</strong><a hidden class="anchor" aria-hidden="true" href="#3-contextual-searches">#</a></h3>
-<p>Metadata adds layers of context, enabling targeted searches based on user-defined criteria such as customer type, language, or last updated date.</p>
+<p><strong>2. Disambiguating Similar Names</strong>
+When multiple embeddings have close similarity scores, metadata like <code>status</code>, <code>region</code>, or <code>type</code> can be used to prioritize the correct match.</p>
+<p><strong>3. Contextual Searches</strong>
+Metadata adds layers of context, enabling targeted searches based on user-defined criteria such as customer type, language, or last updated date.</p>
 <hr>
 <h2 id="python-implementation"><strong>Python Implementation</strong><a hidden class="anchor" aria-hidden="true" href="#python-implementation">#</a></h2>
 <p>Here’s how to implement a customer code retrieval system using a vector database with metadata filtering. We&rsquo;ll use the <strong>Pinecone</strong> vector database and <strong>sentence-transformers</strong> for generating embeddings.</p>
