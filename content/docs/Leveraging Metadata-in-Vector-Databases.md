@@ -26,15 +26,15 @@ For example:
 
 ## **Enhancing Searches with Metadata**
 
-### **1. Refining Search Results**
+**1. Refining Search Results**
 Metadata allows you to filter results based on specific criteria. For example:
 - Retrieve customers only from a specific region.
 - Consider only active customers.
 
-### **2. Disambiguating Similar Names**
+**2. Disambiguating Similar Names**
 When multiple embeddings have close similarity scores, metadata like `status`, `region`, or `type` can be used to prioritize the correct match.
 
-### **3. Contextual Searches**
+**3. Contextual Searches**
 Metadata adds layers of context, enabling targeted searches based on user-defined criteria such as customer type, language, or last updated date.
 
 ---
